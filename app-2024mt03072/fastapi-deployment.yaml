@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fastapi-deployment
-  namespace: ns-2024mt03072
+  namespace: ns-fastapi-2024mt03072
 spec:
   replicas: 2
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: img-2024mt03072:v2
+        image: img-2024mt03072:v7
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000

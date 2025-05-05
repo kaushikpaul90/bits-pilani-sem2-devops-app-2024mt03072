@@ -1,9 +1,9 @@
 # Importing FastAPI framework to create a web application
 import os
 from fastapi import FastAPI
-
 # Importing BaseSettings from pydantic_settings to manage application configuration
 from pydantic_settings import BaseSettings
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # Defining a Settings class to manage application settings using environment variables
 class Settings(BaseSettings):
@@ -18,15 +18,25 @@ settings = Settings()   # Creating an instance of the Settings class to access c
 
 app = FastAPI() # Creating an instance of the FastAPI application
 
+# Instrumentator to expose Prometheus metrics
+Instrumentator().instrument(app).expose(app)
+
+# # Middleware for Prometheus instrumentation
+# @app.middleware("http")
+# async def prometheus_middleware(request, call_next):
+#     # Instrument the app and expose Prometheus metrics
+#     instrumentator.instrument(app).expose(app)
+#     # Process the request and get the response
+#     response = await call_next(request)
+#     return response
+
 # Defining a route to handle GET requests at the "/get_info" endpoint
 @app.get("/get_info")
 async def get_info():
     pod_name = os.environ.get("HOSTNAME", "unknown")    # Fetching the pod name from environment variables, defaulting to "unknown" if not set
-    pod_ip = os.environ.get("POD_IP", "unknown")        # Fetching the pod IP from environment variables, defaulting to "unknown" if not set
     # Returning a JSON response with application version and title
     return {
         "APP_VERSION": settings.APP_VERSION,  # Fetching the application version from settings
         "APP_TITLE": settings.APP_TITLE,      # Fetching the application title from settings
-        "POD_NAME": pod_name,    # Including the pod name in the response
-        "POD_IP": pod_ip         # Including the pod IP in the response
+        "POD_NAME": pod_name    # Including the pod name in the response
     }
