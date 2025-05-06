@@ -4,5 +4,5 @@ metadata:
   name: config-2024mt03072
   namespace: ns-fastapi-2024mt03072
 data:
-  APP_VERSION: "2.1"
+  APP_VERSION: "1.2"
   APP_TITLE: "My FastAPI App"
