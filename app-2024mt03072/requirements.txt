@@ -1,5 +1,6 @@
+psutil
 fastapi
 uvicorn
 python-dotenv
 pydantic-settings
-prometheus-fastapi-instrumentator
+prometheus_client

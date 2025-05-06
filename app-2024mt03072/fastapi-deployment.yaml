@@ -15,10 +15,15 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: img-2024mt03072:v7
+        image: img-2024mt03072:dev
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
         envFrom:
         - configMapRef:
             name: config-2024mt03072
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
