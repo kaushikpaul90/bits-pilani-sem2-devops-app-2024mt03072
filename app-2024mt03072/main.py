@@ -43,9 +43,3 @@ async def get_info():
         "APP_TITLE": settings.APP_TITLE,      # Fetching the application title from settings
         "POD_NAME": POD_NAME                  # Including the pod name in the response
     }
-
-# Defining a route to expose metrics at the "/metrics" endpoint for Prometheus to scrape
-@app.get("/metrics")
-async def metrics():
-    data = generate_latest()  # Generate the latest metrics in Prometheus text format
-    return Response(content=data, media_type=CONTENT_TYPE_LATEST)  # Return metrics as HTTP response
