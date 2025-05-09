@@ -18,6 +18,10 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 
 
+---
+
+## 2. Docker Image Creation
+```bash
 # Install Docker
 sudo apt-get install -y docker.io
 sudo systemctl enable --now docker
@@ -29,6 +33,10 @@ docker build -t img-2024mt03072:dev .
 docker images
 
 
+---
+
+## 3. Run and Monitor Docker Container
+```bash
 # Run Docker container with port forwarding
 docker run -d --name cnr-2024mt03072 -p 8000:8000 img-2024mt03072:dev
 
@@ -37,6 +45,10 @@ docker ps
 docker logs cnr-2024mt03072
 
 
+---
+
+## 4. Kubernetes Deployment with Minikube
+```bash
 # Download and install Minikube
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikubelinux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
@@ -60,6 +72,10 @@ minikube kubectl -- get deployments -n ns-fastapi-2024mt03072
 minikube kubectl -- get pods -n ns-fastapi-2024mt03072
 
 
+---
+
+## 5. Expose FastAPI Service and Generate Load
+```bash
 # Create and expose FastAPI service
 minikube kubectl -- apply -f fastapi-service-2024mt03072.yaml
 minikube kubectl -- get services -n ns-fastapi-2024mt03072
@@ -74,6 +90,10 @@ for i in {1..2000}; do
 done
 
 
+---
+
+## 6. Monitoring with Prometheus
+```bash
 # Reinstall Python dependencies if required
 pip install -r requirements.txt
 
