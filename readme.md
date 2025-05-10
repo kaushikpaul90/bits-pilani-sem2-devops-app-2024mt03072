@@ -23,6 +23,7 @@ pip install -r requirements.txt
 
 # Start the FastAPI development server on port 8000
 uvicorn main:app --reload --port 8000
+```
 
 
 ## **2. Docker Image Creation**
@@ -39,6 +40,7 @@ docker build -t img-2024mt03072:dev .
 
 # List all Docker images on the system
 docker images
+```
 
 
 ## **3. Run and Monitor Docker Container**
@@ -52,6 +54,7 @@ docker ps
 
 # View logs from the running container named 'cnr-2024mt03072'
 docker logs cnr-2024mt03072
+```
 
 
 ## **4. Kubernetes Deployment with Minikube**
@@ -92,6 +95,7 @@ minikube kubectl -- get deployments -n ns-fastapi-2024mt03072
 
 # List all pods in the namespace
 minikube kubectl -- get pods -n ns-fastapi-2024mt03072
+```
 
 
 ## **5. Expose FastAPI Service and Generate Load**
@@ -113,6 +117,7 @@ for i in {1..2000}; do
   echo
   sleep 1
 done
+```
 
 
 ## **6. Monitoring with Prometheus**
@@ -144,6 +149,7 @@ minikube kubectl -- get services -n ns-fastapi-2024mt03072
 
 # Get the URL for Prometheus UI
 minikube service prometheus -n ns-fastapi-2024mt03072 --url
+```
 
 #### **Example Prometheus Queries**
 
