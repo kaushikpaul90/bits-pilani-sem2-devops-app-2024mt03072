@@ -153,6 +153,7 @@ minikube service prometheus -n ns-fastapi-2024mt03072 --url
 
 #### **Example Prometheus Queries**
 
+```bash
 # Total number of FastAPI /get_info requests
 get_info_requests_total
 
@@ -161,3 +162,4 @@ container_cpu_usage_seconds_total{namespace="ns-fastapi-2024mt03072"}
 
 # Memory usage for containers in MB
 container_memory_usage_bytes{namespace="ns-fastapi-2024mt03072"} / (1024 * 1024)
+```
