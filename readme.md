@@ -5,6 +5,7 @@
 
 ## **1. Local Setup and FastAPI Development**
 
+```bash
 # Create a new directory for the project
 mkdir app-2024mt03072
 
@@ -26,6 +27,7 @@ uvicorn main:app --reload --port 8000
 
 ## **2. Docker Image Creation**
 
+```bash
 # Install Docker using apt-get (Ubuntu/Debian systems)
 sudo apt-get install -y docker.io
 
@@ -41,6 +43,7 @@ docker images
 
 ## **3. Run and Monitor Docker Container**
 
+```bash
 # Run the Docker container in detached mode and map port 8000 of host to container
 docker run -d --name cnr-2024mt03072 -p 8000:8000 img-2024mt03072:dev
 
@@ -53,6 +56,7 @@ docker logs cnr-2024mt03072
 
 ## **4. Kubernetes Deployment with Minikube**
 
+```bash
 # Download latest Minikube binary for Linux
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikubelinux-amd64
 
@@ -92,6 +96,7 @@ minikube kubectl -- get pods -n ns-fastapi-2024mt03072
 
 ## **5. Expose FastAPI Service and Generate Load**
 
+```bash
 # Apply the FastAPI service YAML to expose the app
 minikube kubectl -- apply -f fastapi-service-2024mt03072.yaml
 
@@ -112,6 +117,7 @@ done
 
 ## **6. Monitoring with Prometheus**
 
+```bash
 # Reinstall Python dependencies if needed
 pip install -r requirements.txt
 
